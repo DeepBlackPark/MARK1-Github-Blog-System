@@ -59,10 +59,10 @@ def create(your_username):
     <link rel="stylesheet" href="https://unpkg.com/@picocss/pico@latest/css/pico.min.css" />
     <script defer src="https://pyscript.net/alpha/pyscript.js"></script>  
     <style>
-        .console-text {
+        .console-text {{
             color: green;
             font-family: 'Courier New', 'Lucida Console', monospace;
-        }
+        }}
     </style>
   </head>
   <body>
@@ -72,7 +72,7 @@ def create(your_username):
       your_usernames = "{your_username}"
 
       def form_filling(x):
-        return f"https://{{your_usernames}}.github.io/ED170_R.html?v={x}"
+        return f"https://{{your_usernames}}.github.io/ED170_R.html?v={{x}}"
       
       def function_add_text(*args):
         output_text.element.innerText = form_filling(input_text.value) 
@@ -106,9 +106,9 @@ def create(your_username):
           const urlParams = new URLSearchParams(window.location.search);
           const initialValue = urlParams.get('v');
   
-          if (initialValue) {
+          if (initialValue) {{
               document.getElementById('input_text').value = initialValue;
-          }
+          }}
         </script>
       </div> 
     </main>    
