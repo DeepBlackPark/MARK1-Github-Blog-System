@@ -1,14 +1,15 @@
 from sys import argv as a
 
 def create(your_username):
+  blogname = your_username + "'s blog"
   return {
     "index.html" : f"""<!DOCTYPE html>
 <html>
   <head>
-    <title> DEEP BLACK PARK </title>
+    <title> {blogname} </title> //BLOGNAME
   </head>
   <body>
-    <h1> DEEP BLACK PARK </h1>
+    <h1> {blogname} </h1> //BLOGNAME
     <details>
       <summery> BLOG POST </summery>
       <div>
