@@ -1,3 +1,5 @@
+from sys import argv as a
+
 def create(your_username):
   return {
     "index.html" : f"""<!DOCTYPE html>
@@ -113,3 +115,19 @@ def create(your_username):
   </body>
 </html>"""
   }
+
+def gener(**json):
+  for i, j in json.items():
+    with open(i, 'w') as f: f.write(j)
+
+init_site_FE = lambda x : gener(create(x))
+
+def CLIGenCore(a):
+  return a[1] if len(a) > 1 else input("you'r github username : ")
+
+def CLI():
+  init_site_FE(CLIGenCore(a))
+
+main = CLI
+
+if __name__ == "__main__": main()
