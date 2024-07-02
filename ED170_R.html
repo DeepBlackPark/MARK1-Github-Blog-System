@@ -8,24 +8,21 @@
     <script defer src="https://pyscript.net/alpha/pyscript.js"></script>  
     <style>
         .console-text {
-            color: green; /* 글씨 색을 초록색으로 설정 */
-            font-family: 'Courier New', 'Lucida Console', monospace; /* 콘솔체 글꼴 설정 */
+            color: green;
+            font-family: 'Courier New', 'Lucida Console', monospace;
         }
     </style>
   </head>
   <body>
     <py-script>
-      # html ID "input_text"와 "output_text" 와 연결된 객체 생성
       input_text = Element("input_text")
       output_text = Element("output_text")
-      y = "https://DeepBlackPark.github.io/ED170_R.html?v="
+      your_usernames = "{your_username}"
 
       def form_filling(x):
-        return f"{y}{x}"
+        return f"https://{your_usernames}.github.io/ED170_R.html?v={x}"
       
-      # html 에서 생성한 ID "add_text" 의 버튼이 눌렸을 때 호출될 pys-onClick 인자로 설정된 함수 생성
       def function_add_text(*args):
-        # output_text 객체의 text 값을 input_text의 값으로 지정
         output_text.element.innerText = form_filling(input_text.value) 
     </py-script>    
     <main class = "container">
@@ -35,7 +32,7 @@
         <div>
           <ol class = ".console-text">
             <li class = ".console-text">
-              <a class = ".console-text" href = "https://DeepBlackPark.github.io/"> back to the homepage </a>
+              <a class = ".console-text" href = "https://{your_username}.github.io/"> back to the homepage </a>
             </li>
             <li class = ".console-text">
               <details class = ".console-text">
@@ -50,15 +47,13 @@
       </details>
       <h3 id = "output_text"></h3>
       <div>
-        <input id = "input_text" type="text" placeholder="텍스트를 입력하세요">
+        <input id = "input_text" type="text" placeholder="input text">
         <button id = "add_text" pys-onClick ="function_add_text">Click</button>
 
         <script>
-          // URL의 쿼리 파라미터에서 'v' 값 추출
           const urlParams = new URLSearchParams(window.location.search);
           const initialValue = urlParams.get('v');
   
-          // 'v' 값이 존재하면 input의 초깃값 설정, 이제는 AI가 나보다 주석을 잘다네..., 그래도 옛날 나는 더 쩔었는데...
           if (initialValue) {
               document.getElementById('input_text').value = initialValue;
           }
@@ -67,107 +62,3 @@
     </main>    
   </body>
 </html>
-
-<!--<!DOCTYPE html>
-<html>
-  <head>
-    <meta name="viewport" content="width=device-width,initial-scale=1" />
-    <title> TEXT EDITOR </title>
-    <link rel="stylesheet" href="https://unpkg.com/@picocss/pico@latest/css/pico.min.css" />
-    <script defer src="https://pyscript.net/alpha/pyscript.js"></script>
-  </head>
-  <body>
-    <!--<py-script>
-      #LOADING $ARGV
-
-      from js import document, window
-
-      url_params = window.location.search
-      params = window.URLSearchParams.new(url_params)
-      v_value = params.get('v')
-      
-      input_element = document.getElementById("TxtI") #Thanks for AI, I'll use it like component
-      input_element.value = v_value if v_value else "" #Thanks for AI, I'll use it like component
-
-      del input_element
-      
-      #LOADING $ARGV
-      
-      I = Element("TxtI")
-      O = Element("TxtO")
-
-      def gen_str(x):
-        print(x)
-        return f"https://DeepBlackPark.github.io/ED170_R.html?v={x}"
-
-      def save():
-        O.element.innerText = gen_str(I.value)
-        print(O.element.innerText)
-      
-    </py-script>
-    <h1> TEXT EDITOR </h1>
-    <h2> WARNING : It's Indev. </h2>
-    <details>
-      <summery> More </summery>
-      <div>
-        <a href = "https://DeepBlackPark.github.io/"> back to the homepage </a>
-      </div>
-    </details>
-    <div class = "container">
-      <p id="TxtO"></p>
-      <div>
-        <input id="TxtI" type="text">
-        <button py-click="save"> save </button>
-      </div>
-    </div>- // split!!! // ->
-    <h1> TEXT EDITOR </h1>
-    <h2> WARNING : It's Indev. </h2>
-    <details>
-      <summery> More </summery>
-      <div>
-        <a href = "https://DeepBlackPark.github.io/"> back to the homepage </a>
-      </div>
-    </details>
-    <py-script>
-      I = Element("input_text")
-      O = Element("output_text")
-
-      def formsFilling(x):
-        return f"https://DeepBlackPark.github.io/ED170_R.html?v={x}"
-      
-      def Saving(*args):
-        O.element.innerText = formsFilling(I.value)
-    </py-script>    
-    <main class = "container">
-      <h1 id = "OutputText"></h1>
-      <div>
-        <input id = "InputText" type="text">
-        <button id = "SaveButton" pys-onClick = "Saving"> save by url </button>
-      </div> 
-    </main>
-  </body>
-</html>-->
-
-<!-- <!DOCTYPE html>
-<html lang="ko">
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Test Input</title>
-</head>
-<body>
-    <input type="text" id="myInput" />
-    <script>
-        // URL의 쿼리 파라미터에서 'v' 값 추출
-        const urlParams = new URLSearchParams(window.location.search);
-        const initialValue = urlParams.get('v');
-
-        // 'v' 값이 존재하면 input의 초깃값 설정
-        if (initialValue) {
-            document.getElementById('myInput').value = initialValue;
-        }
-    </script>
-</body>
-</html>
--->
-
